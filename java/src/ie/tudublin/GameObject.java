@@ -6,7 +6,7 @@ public abstract class GameObject {
     float dx, dy;
     float rotation = 0;
     float speed = 5;
-    YASC yasc;
+    YASC yasc; //so we can draw object
     float w = 50;
     float halfW = w / 2;
 
@@ -18,7 +18,7 @@ public abstract class GameObject {
         this.rotation = rotation;
     }
 
-
+//acessor methods
     public float getX() {
         return x;
     }
@@ -47,6 +47,7 @@ public abstract class GameObject {
     public abstract void render();
 
     public abstract void update();
-
+    //abstract classes is class that can only have subclasses and must be implemented in subclass or become
+    //abstarct class
     
 }

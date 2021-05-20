@@ -17,6 +17,8 @@ public class YASC extends PApplet {
     Health h;
     Ammo a;
     ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    //later replaced with ArrayList<GameObject> = new ArrayList<GameObject>();
+    //polymorphism is the type is of the base class, but the instance is a subclass
 
     public void settings() {
         size(500, 500);
@@ -26,6 +28,11 @@ public class YASC extends PApplet {
         p = new Player(this, width / 2, height / 2);
         h = new Health(this);
         a = new Ammo(this);
+
+        //gameObjects.ass(p);
+        //gameObjects.ass(h);
+        //gameObjects.ass(a);
+
     }
 
     public void draw() {
@@ -46,9 +53,9 @@ public class YASC extends PApplet {
 
         for(int i = bullets.size() - 1; i >= 0 ; i--)
         {
-            Bullet b = bullets.get(i);
-            b.update();
-            b.render();
+            Bullet b = bullets.get(i); //change to GameObjects.get(i);
+            b.update(); //go.update();
+            b.render(); //go.render();
         }
        
         // Check collisions        

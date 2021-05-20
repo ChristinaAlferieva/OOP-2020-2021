@@ -62,7 +62,7 @@ public class Audio1 extends PApplet {
 
     public void draw() {
         background(0);
-        stroke(255);
+        stroke(200);
         float halfHeight = height / 2;
         float average = 0;
         float sum = 0;

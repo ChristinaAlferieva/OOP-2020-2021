@@ -18,6 +18,7 @@ public class Bullet extends GameObject{
         timeAlive = 0;
     }
 
+    //abstract method
     public void render()
     {
         yasc.stroke(255);
@@ -36,10 +37,10 @@ public class Bullet extends GameObject{
         dx = PApplet.sin(rotation);
         dy =  - PApplet.cos(rotation);
 
-        x += dx * speed;
+        x += dx * speed; //move bullet
         y += dy * speed;
 
-        timeAlive += (1 / 60.0f);
+        timeAlive += (1 / 60.0f); //gonna increase one sixteeth of secong on screen
         if (timeAlive > lifetime)
         {
             yasc.bullets.remove(this);
@@ -47,7 +48,7 @@ public class Bullet extends GameObject{
 
         if (x < 0)
         {
-            x = yasc.width;
+            x = yasc.width; //respawn at right hand side
         }
         if ( x > yasc.width)
         {

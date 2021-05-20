@@ -12,7 +12,7 @@ public class Player extends GameObject {
         super(yasc, x, y, 0);
     }
 
-    public void render()
+    public void render() //translation to positition and rotate and turn 
     {
         yasc.pushMatrix();
         yasc.translate(x, y);
@@ -24,7 +24,7 @@ public class Player extends GameObject {
         yasc.line(0, - halfW, halfW, halfW);
         yasc.line(halfW, halfW, 0, 0);
         yasc.line(0, 0, - halfW, halfW);
-        yasc.popMatrix();
+        yasc.popMatrix(); //player independent 
         yasc.textSize(14);        
     }
 
@@ -42,10 +42,11 @@ public class Player extends GameObject {
 
     public void update()
     {
+        //unit circle - dx is sine of rotation and dy is cosine of rotation 
         dx = PApplet.sin(rotation);
         dy =  - PApplet.cos(rotation);
         
-        if (yasc.checkKey(PApplet.UP))
+        if (yasc.checkKey(PApplet.UP)) //if keys pressed
         {
             x += dx;
             y += dy;

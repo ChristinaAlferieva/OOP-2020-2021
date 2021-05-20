@@ -10,6 +10,7 @@ public class Star {
     private float xG,yG,zG;
     private float absMag;
 
+    //default contsructor - takes no parameters, any default values
     public Star()
     {
         
@@ -31,12 +32,13 @@ public class Star {
         pa.text(displayName, x + 10, y);
     }
 
-    public Star(TableRow row)
+    public Star(TableRow row) //takes single table row and creates star from it
     {
-        // Constructor chaining
+        // Constructor chaining - lots of diff contructors and dont want to duplicate them, so call some contructors from other contructor
         this(
-            row.getInt("Hab?") == 1 ? true : false,
-            row.getString("Display Name"),
+            //returns column with name hab
+            row.getInt("Hab?") == 1 ? true : false,//either 1 or empty, use inline if, 
+            row.getString("Display Name"), //returns column as string
             row.getFloat("Distance"),
             row.getFloat("Xg"),
             row.getFloat("Yg"),
@@ -47,6 +49,7 @@ public class Star {
 
     public Star(boolean hab, String displayName, float distance, float xG, float yG, float zG, float absMag)
     {
+        //allows to disanbiguate so no two habs
         this.hab = hab;
         this.displayName = displayName;
         this.distance = distance;
@@ -57,10 +60,13 @@ public class Star {
     }
     
     public boolean isHab() {
+        //allows get private fields
         return hab;
     }
 
+    //accessor methods
     public void setHab(boolean hab) {
+        //pass boolean hab, assigning private field from parameter
         this.hab = hab;
     }
 
@@ -112,7 +118,8 @@ public class Star {
         this.absMag = absMag;
     }
 
-    @Override
+    //method called automatically when object passed to something that expects a string
+    @Override //indicates overrides methods in superclass
     public String toString() {
         return "Star [absMag=" + absMag + ", displayName=" + displayName + ", distance=" + distance + ", hab=" + hab
                 + ", xG=" + xG + ", yG=" + yG + ", zG=" + zG + "]";

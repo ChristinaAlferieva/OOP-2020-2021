@@ -8,49 +8,53 @@ import processing.data.TableRow;
 
 public class StarMap extends PApplet {
 
+    //array list of objects, can change amount of elements
     ArrayList<Star> stars = new ArrayList<Star>();
 
     int startStar = -1;
     int endStar = -1;
 
 
-    
+    //draw grid and render stars to grid
     void drawGrid()
     {
-        float border = 0.1f * width;
-        textAlign(CENTER, CENTER);
+        float border = 0.1f * width; // 10% of border
+        textAlign(CENTER, CENTER); //alligns text around x and y coordinates
         //float drawable = width - (border * 2.0f);
-        // /float gap = drawable / 10.0f;
-        for(int i = -5 ; i <=5 ; i ++)
+        // /float gap = drawable / 10.0f; -devide by amount of boxes, so gap betwwen lines
+        for(int i = -5 ; i <=5 ; i ++) //generate numbers from -5 to 5
         {
+            //mapping range from 5 to -5, mapped onto screen coordinate border to left and to the right
             float x = map(i, -5, 5, border, width - border);
             float y = map(i, -5, 5, border, height - border);
             //float x = border + ((i + 5) * gap);
             //float y = border + ((i + 5) * gap);
             stroke(0, 0, 255);
-            line(x, border,x, height - border);
-            line(border, y, width - border, y);
+            line(x, border,x, height - border);//horixontal line
+            line(border, y, width - border, y); //vertical line
             fill(255);
             text(i, x, border / 2);
-            text(i, border / 2, y);
+            text(i, border / 2, y); //draws grid
         }
     }
 
+    //print all elements in array list
     void printStars()
     {
-        for(Star s: stars)
+        for(Star s: stars) //enhanced forloop to iterate over list
         {
             println(s);
         }
     }
 
+    //loading stars, load table object into array list and enstantuate star class
     void loadStars()
     {
-        Table table = loadTable("HabHYG15ly.csv", "header");
-        for(TableRow row:table.rows())
+        Table table = loadTable("HabHYG15ly.csv", "header"); //table object one of processing objects, header tells csv file has names headers
+        for(TableRow row:table.rows()) //enhanced forloop, iterates over collection
         {
-            Star s = new Star(row);
-            stars.add(s);
+            Star s = new Star(row);  //println(row) would just print each row
+            stars.add(s); //add star to arraylist
         }
     }
 

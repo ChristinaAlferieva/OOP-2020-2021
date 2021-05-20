@@ -18,8 +18,8 @@ public class Health extends GameObject {
         switch (dice)
         {
             case 0:
-                // left
-                x = -w;
+                // left of the screen
+                x = -w; 
                 y = yasc.random(0, yasc.height);
                 dx = yasc.random(1, 4);
                 dy = yasc.random(-1, 1);
@@ -68,10 +68,12 @@ public class Health extends GameObject {
 
     public void update()
     {        
+        //move in direction pointing
         x += dx;
         y += dy;
         rotation += 0.01f;
 
+        //if off screen then respawn
         if (x < - w)
         {
             respawn();
